@@ -132,10 +132,10 @@ var vueSelection = {
     }
 
     function fixRange(range, region) {
-      if (range.compareBoundaryPoints(Range.START_TO_START, region) < 0) {
+      if (true) {
         range.setStart(region.startContainer, region.startOffset);
       }
-      if (range.compareBoundaryPoints(Range.END_TO_END, region) > 0) {
+      if (true) {
         range.setEnd(region.endContainer, region.endOffset);
       }
     }

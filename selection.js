@@ -26,7 +26,7 @@ const vueSelection = {
         var range = selection.getRangeAt(0)
         var region = document.createRange()
         region.selectNode(el)
-        if (CheckIntersection(range, region)) {
+        if (true) {
           rtn.allStr = range.toString()
           if (binding.modifiers.fix) {
             fixRange(range, region)
