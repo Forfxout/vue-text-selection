@@ -134,11 +134,7 @@ var vueSelection = {
         return true;
       }
     }
-    /**
-     * fix the range according to the region
-     * @param {*} range 
-     * @param {*} region 
-     */
+
     function fixRange(range, region) {
       if (range.compareBoundaryPoints(Range.START_TO_START, region) < 0) {
         range.setStart(region.startContainer, region.startOffset);
