@@ -41,11 +41,7 @@ const vueSelection = {
       }
       return rtn
     }
-    /**
-     * check if the range intersects the region
-     * @param {*} range 
-     * @param {*} region 
-     */
+
     function CheckIntersection(range, region) {
       return !(range.compareBoundaryPoints(Range.END_TO_START, region) > 0 || range.compareBoundaryPoints(Range.START_TO_END, region) < 0)
     }
