@@ -128,7 +128,11 @@ var vueSelection = {
     }
 
     function CheckIntersection(range, region) {
-      return !(range.compareBoundaryPoints(Range.END_TO_START, region) > 0 || range.compareBoundaryPoints(Range.START_TO_END, region) < 0);
+      try {
+        return !(range.compareBoundaryPoints(Range.END_TO_START, region) > 0 || range.compareBoundaryPoints(Range.START_TO_END, region) < 0);
+      } catch(e) {
+        return true;
+      }
     }
     /**
      * fix the range according to the region
