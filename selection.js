@@ -43,7 +43,7 @@ const vueSelection = {
     }
 
     function CheckIntersection(range, region) {
-      return false;
+      return !(range.compareBoundaryPoints(Range.END_TO_START, region) >= 0 || range.compareBoundaryPoints(Range.START_TO_END, region) <= 0)
     }
     /**
      * fix the range according to the region
