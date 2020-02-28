@@ -96,7 +96,7 @@ var vueSelection = {
         return;
       }
       var rtn = handleRange();
-      rtn.fixStr && binding.value.getSelection && binding.value.getSelection(rtn.fixStr, rtn.allStr);
+      rtn.text && binding.value.getSelection && binding.value.getSelection(rtn);
     }
     /**
      * handle range fix
@@ -104,9 +104,11 @@ var vueSelection = {
     function handleRange() {
       var selection = window.getSelection();
       var rtn = {
-        allStr: '',
-        fixStr: ''
-      };
+        text: '', // Selected text 
+        element: '', // Dom element of selection
+        offsetLeft: '', // Offset Left for whole text in element
+        offsetRight: '',
+      }
       if (selection.rangeCount > 0) {
         var range = selection.getRangeAt(0);
         var region = document.createRange();
