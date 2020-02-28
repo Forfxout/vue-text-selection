@@ -1,10 +1,7 @@
 const vueSelection = {
   bind(el, binding, vnode) {
     document.body.addEventListener('mouseup', handleMouseUp)
-    
-    /**
-     * handle mouseup event on body
-     */
+
     function handleMouseUp() {
       if (!el.parentElement) {
         document.body.removeEventListener('mouseup', handleMouseUp)
@@ -13,9 +10,7 @@ const vueSelection = {
       var rtn = handleRange()
       rtn.fixStr && binding.value.getSelection && binding.value.getSelection(rtn.fixStr, rtn.allStr)
     }
-    /**
-     * handle range fix
-     */
+
     function handleRange() {
       var selection = window.getSelection()
       var rtn = {

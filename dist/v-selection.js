@@ -86,7 +86,7 @@ Object.defineProperty(exports, "__esModule", {
 var vueSelection = {
   bind: function bind(el, binding, vnode) {
     document.body.addEventListener('mouseup', handleMouseUp);
-
+      
     /**
      * handle mouseup event on body
      */
@@ -132,12 +132,13 @@ var vueSelection = {
     }
 
     function fixRange(range, region) {
-      // if (range.compareBoundaryPoints(Range.START_TO_START, region) < 0) {
-      //   range.setStart(region.startContainer, region.startOffset);
-      // }
-      // if (range.compareBoundaryPoints(Range.END_TO_END, region) > 0) {
-      //   range.setEnd(region.endContainer, region.endOffset);
-      // }
+      if (range.compareBoundaryPoints(Range.START_TO_START, region) < 0) {
+        range.setStart(region.startContainer, region.startOffset);
+      }
+      if (range.compareBoundaryPoints(Range.END_TO_END, region) > 0) {
+        range.setEnd(region.endContainer, region.endOffset);
+      }
+      console.log(Range.START_TO_START, Range.END_TO_END);
     }
   }
 };
