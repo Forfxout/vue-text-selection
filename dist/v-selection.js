@@ -105,10 +105,10 @@ var vueSelection = {
       var selection = window.getSelection();
       var rtn = {
         text: '', // Selected text 
-        element: '', // Dom element of selection
         offsetLeft: '', // Offset Left for whole text in element
         offsetRight: '',
       }
+
       if (selection.rangeCount > 0) {
         var range = selection.getRangeAt(0);
         var region = document.createRange();
@@ -131,12 +131,8 @@ var vueSelection = {
       // Changed code goes here
       delete rtn.allStr;
       delete rtn.fixStr;
-      rtn.inOneContainer = range.startContainer.wholeText == range.endContainer.wholeText;
-      rtn.layer = range.startContainer.parentNode.parentNode;
-      rtn.el = range.endContainer;
-      rtn.wholeText = range.endContainer.wholeText;
+      rtn.range = range;
       rtn.text = range.toString();
-      rtn.element = `<span style="${range.endContainer.parentNode.style.cssText}">${range.endContainer.wholeText}</span>`;
       rtn.offsetLeft = range.startOffset;
       rtn.offsetRight = range.endOffset;
       return rtn;
