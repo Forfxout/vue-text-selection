@@ -112,6 +112,7 @@ var vueSelection = {
       if (selection.rangeCount > 0) {
         var range = selection.getRangeAt(0);
         var region = document.createRange();
+
         region.selectNode(el);
         if (CheckIntersection(range, region)) {
           rtn.allStr = range.toString();
@@ -130,12 +131,14 @@ var vueSelection = {
       // Changed code goes here
       delete rtn.allStr;
       delete rtn.fixStr;
+      rtn.inOneContainer = range.startContainer.wholeText == range.endContainer.wholeText;
+      rtn.layer = range.startContainer.parentNode.parentNode;
+      rtn.el = range.endContainer;
+      rtn.wholeText = range.endContainer.wholeText;
       rtn.text = range.toString();
       rtn.element = `<span style="${range.endContainer.parentNode.style.cssText}">${range.endContainer.wholeText}</span>`;
       rtn.offsetLeft = range.startOffset;
       rtn.offsetRight = range.endOffset;
-      // console.log(rtn)
-      // console.log(range)
       return rtn;
     }
     /**
@@ -144,7 +147,7 @@ var vueSelection = {
      * @param {*} region 
      */
     function CheckIntersection(range, region) {
-      return !(range.compareBoundaryPoints(Range.END_TO_START, region) > 0 || range.compareBoundaryPoints(Range.START_TO_END, region) < 0);
+      return true;
     }
     /**
      * fix the range according to the region
@@ -152,10 +155,10 @@ var vueSelection = {
      * @param {*} region 
      */
     function fixRange(range, region) {
-      if (range.compareBoundaryPoints(Range.START_TO_START, region) < 0) {
+      if (true) {
         range.setStart(region.startContainer, region.startOffset);
       }
-      if (range.compareBoundaryPoints(Range.END_TO_END, region) > 0) {
+      if (true) {
         range.setEnd(region.endContainer, region.endOffset);
       }
     }
