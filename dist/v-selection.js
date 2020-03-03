@@ -127,14 +127,17 @@ var vueSelection = {
           }
         }
       }
-      
-      // Changed code goes here
-      delete rtn.allStr;
-      delete rtn.fixStr;
-      rtn.range = range;
-      rtn.text = range.toString();
-      rtn.offsetLeft = range.startOffset;
-      rtn.offsetRight = range.endOffset;
+      if(range) {
+        // Changed code goes here
+        delete rtn.allStr;
+        delete rtn.fixStr;
+        rtn.range = range;
+        rtn.text = range.toString();
+        rtn.offsetLeft = range.startOffset;
+        rtn.offsetRight = range.endOffset;
+      } else 
+        rtn.text = ''
+
       return rtn;
     }
     /**
